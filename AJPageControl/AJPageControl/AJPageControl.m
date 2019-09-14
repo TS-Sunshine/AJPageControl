@@ -7,8 +7,8 @@
 //
 
 #import "AJPageControl.h"
-#define kDotW 30  //圆点的宽度
-#define kMagrin 0 //圆点之间的间隔
+#define kDotW 20  //圆点的宽度
+#define kMagrin 10 //圆点之间的间隔
 
 
 @implementation AJPageControl
@@ -33,12 +33,13 @@
         CGRect tempRect = dot.frame;
         if (i == self.currentPage){
             dot.image = self.currentImage;
-            tempRect = CGRectMake(-self.currentImageSize.width/2, 0, self.currentImageSize.width, self.currentImageSize.height);
+            tempRect = CGRectMake(0, 0, self.currentImageSize.width, self.currentImageSize.height);
             dot.frame = tempRect;
         }else{
+            CGRect inactiveRect = CGRectMake(kDotW/2 - self.inactiveImageSize.width / 2, 0, 0, 0);
             dot.image = self.inactiveImage;
-            tempRect.size = self.inactiveImageSize;
-            dot.frame = tempRect;
+            inactiveRect.size = self.inactiveImageSize;
+            dot.frame = inactiveRect;
         }
     }
 }
